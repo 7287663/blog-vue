@@ -36,7 +36,6 @@
   .main {
     position: absolute;
     top: 130px;
-    overflow-y: auto;
     left: 0;
     right: 0;
     bottom: 0;

@@ -23,9 +23,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    overflow-y: auto;
     width: 770px;
-
     background-color: white;
   }
 
@@ -35,6 +33,5 @@
     top: 0;
     right: 0;
     bottom: 0;
-    overflow-y: auto;
   }
 </style>

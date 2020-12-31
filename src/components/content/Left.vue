@@ -14,7 +14,7 @@
 </template>
 
 <script>
-  import {getBlog, addLike} from "../../api/blog1";
+  import {getBlog, addLike} from "@/api/blog1";
 
   export default {
     name: "Left",
