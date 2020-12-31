@@ -3,7 +3,8 @@
     <div class="bottom">
       <ul>
         <li v-for="(item, index) in tag" :key="index">
-          <a href="#" @click="handleSelect(index,item.name)" :class="[index === activeIndex ? 'active' : '']">{{item.name}}</a>
+          <a href="#" @click="handleSelect(index,item)"
+             :class="[index === activeIndex ? 'active' : '']">{{item.name}}</a>
         </li>
       </ul>
     </div>
@@ -11,7 +12,7 @@
 </template>
 
 <script>
-  import {tagList} from "../../api/tag1.js";
+  import {tagList, tagClick} from "../../api/tag1.js";
 
   export default {
     name: "End",
@@ -25,9 +26,10 @@
       this.fetchData();
     },
     methods: {
-      handleSelect(index, name) {
+      handleSelect(index, item) {
         this.activeIndex = index
-        PubSub.publish('changeTag', name);
+        PubSub.publish('changeTag', item.name);
+        tagClick(item.id);
       },
       fetchData() {
         tagList().then(res => {
