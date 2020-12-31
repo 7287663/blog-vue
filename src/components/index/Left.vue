@@ -209,6 +209,9 @@
 </script>
 
 <style scoped>
+.tab {
+  background-color: #ffffff;
+}
   .blog {
     border-bottom: 1px solid rgb(244, 245, 246);
     height: 120px;

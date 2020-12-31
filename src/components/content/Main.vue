@@ -27,7 +27,7 @@
     left: 0;
     bottom: 0;
     width: 770px;
-    background-color: white;
+    padding: 10px;
   }
 
   .main .right {
