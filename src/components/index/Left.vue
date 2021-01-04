@@ -66,6 +66,7 @@
     name: "Left",
     data() {
       return {
+        admin:{},
         select: false,
         page: 1,
         size: 6,
@@ -144,7 +145,7 @@
           }
           this.size += 5;
           this.fetchData();
-        }, 500)
+        }, 200)
       },
       handleClick(tab, event) {
         this.searchMap.hot = tab.name;
@@ -158,7 +159,10 @@
           }
         });
       }
-    }, filters: {
+    },
+
+
+    filters: {
       summary(summary) {
         if (summary.length > 36) {
           return summary.substring(0, 36);

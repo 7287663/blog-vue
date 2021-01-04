@@ -7,7 +7,7 @@
         </div>
         <div class="height">
           <div class="author">
-            <el-avatar :src="require('@/assets/avatar.png')"></el-avatar>
+            <el-avatar :src="admin.via"></el-avatar>
             <p class="author1">{{like.authorName}}</p>
           </div>
           <div class="like">
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import {getBlogLike} from "../../api/blog1";
+  import {getBlogLike,getAdminInfo} from "../../api/blog1";
 
   export default {
     name: "Right",
@@ -34,11 +34,17 @@
     },
     data() {
       return {
-        like: {}
+        like: {},
+        admin:{}
       }
     },
     methods: {
       fetchData() {
+        getAdminInfo(this.authorId).then(res=>{
+          if(res.data.flag){
+            this.admin = res.data.data;
+          }
+        })
         getBlogLike(this.authorId).then(res => {
           if (res.data.flag) {
             this.like = res.data.data;

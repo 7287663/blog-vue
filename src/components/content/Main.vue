@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <Left :id="info.id"/>
+    <Left :id="info.id" :authorId="info.authorId"/>
     <Right :authorId="info.authorId"/>
   </div>
 </template>

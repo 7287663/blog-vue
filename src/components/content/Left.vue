@@ -2,7 +2,7 @@
   <div class="left" v-if="ready">
     <div class="article_title">
       <div class="avatar">
-        <el-avatar :src="require('@/assets/avatar.png')"></el-avatar>
+        <el-avatar :src="admin.via"></el-avatar>
         <p class="author">{{ blog.authorName }}</p>
         <p class="date">{{ blog.createTime }} 阅读 {{ blog.readNum }}</p>
       </div>
@@ -16,21 +16,28 @@
 </template>
 
 <script>
-import { getBlog, addLike } from "@/api/blog1";
+import { getBlog, addLike,getAdminInfo} from "@/api/blog1";
 
 export default {
   name: "Left",
   props: {
-    id: String
+    id: String,
+    authorId:String
   },
   data() {
     return {
       blog: {},
-      ready: false
+      ready: false,
+      admin:{}
     };
   },
   methods: {
     fetchData() {
+      getAdminInfo(this.authorId).then(res=>{
+        if(res.data.flag){
+          this.admin = res.data.data;
+        }
+      })
       addLike(this.id, 1).then(res => {
         getBlog(this.id).then(res => {
           if (res.data.flag) {

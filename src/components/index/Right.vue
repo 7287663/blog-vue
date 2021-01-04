@@ -1,16 +1,16 @@
 <template>
   <div class="right">
-    <div class="friends">
+    <div class="friends" v-show="code1">
       <img
         style="width: 285px; height:285px;margin-top: 7px"
-        src="@/assets/1609308907.jpg"
+        :src="code1"
       />
     </div>
     <el-divider></el-divider>
-    <div class="friends">
+    <div class="friends" v-show="code2">
       <img
         style="width: 285px; height:285px;margin-top: 7px"
-        src="@/assets/gr.jpg"
+        :src="code2"
       />
     </div>
   </div>

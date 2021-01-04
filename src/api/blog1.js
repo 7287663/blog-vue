@@ -26,3 +26,7 @@ export function getCode() {
 export function getBlogLike(id) {
   return v.request.get(`/blog/like/${id}`);
 }
+
+export function  getAdminInfo(id) {
+  return v.request.get(`/info/${id}`);
+}

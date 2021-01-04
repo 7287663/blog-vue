@@ -16,3 +16,8 @@ export function deleteById(id) {
 export function update(pojo) {
     return v.request.put(`/tag`,pojo)
 }
+
+export function tagClick(id) {
+    return v.request.put(`/tag/${id}`)
+
+}
