@@ -12,7 +12,7 @@
               <div class="summary" v-if="item.summary">{{item.summary | summary}}</div>
               <div class="like" v-else>
                 <el-button :class="handleSelect(item) ? 'select':''" size="small" icon="el-icon-thumb"
-                           @click="handleLike(item.id)">
+                           @click.stop="handleLike(item.id)">
                   {{item.likeNum}}
                 </el-button>
                 <el-button size="small" icon="el-icon-chat-dot-round">{{item.commentNum}}</el-button>
@@ -179,12 +179,10 @@
         }
       },
       createTime(createTime) {
+
         var startTime = new Date(createTime);
         var endTime = new Date();
         var diff = endTime.getTime() - startTime.getTime();
-        console.log(startTime)
-        console.log(endTime)
-        console.log(diff)
         //计算年
         var year = Math.floor(diff / (3600 * 1000 * 24 * 360))
         if (year > 0) {
