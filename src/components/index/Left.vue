@@ -145,7 +145,7 @@
           }
           this.size += 5;
           this.fetchData();
-        }, 200)
+        }, 500)
       },
       handleClick(tab, event) {
         this.searchMap.hot = tab.name;
@@ -182,6 +182,9 @@
         var startTime = new Date(createTime);
         var endTime = new Date();
         var diff = endTime.getTime() - startTime.getTime();
+        console.log(startTime)
+        console.log(endTime)
+        console.log(diff)
         //计算年
         var year = Math.floor(diff / (3600 * 1000 * 24 * 360))
         if (year > 0) {
