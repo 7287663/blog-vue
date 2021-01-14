@@ -33,7 +33,7 @@
                :key="index"
           >
             <div class="content">
-              <p class="author">{{item.authorName}} · {{item.createTime}} · {{item.tagName}}</p>
+              <p class="author">{{item.authorName}} · {{item.createTime | createTime }} · {{item.tagName}}</p>
               <h3 class="title">{{item.title | title}}</h3>
               <div class="summary" v-if="item.summary">{{item.summary | summary}}</div>
               <div class="like" v-else>
@@ -205,8 +205,10 @@
         }
         //计算分
         var minutes = Math.floor(diff / (60 * 1000))
-        if (minutes > 0) {
+        if (minutes > 1) {
           return minutes + '分钟前'
+        }else {
+          return '刚刚'
         }
       }
     }
