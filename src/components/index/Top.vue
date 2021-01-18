@@ -36,7 +36,11 @@
       submit() {
         PubSub.publish('searchTitle', this.title);
       }, returnHome() {
+        if(sessionStorage.getItem("page")){
+          sessionStorage.removeItem("page");
+        }
         this.$router.replace('/')
+        location.reload();
       }
     }
   }
