@@ -24,7 +24,6 @@
     left: 0;
     bottom: 0;
     width: 770px;
-    overflow-y: auto;
   }
 
   .main .right {

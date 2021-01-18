@@ -2,7 +2,7 @@
   <div class="left">
     <div class="tab">
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="热门" name="1" v-infinite-scroll="load" infinite-scroll-disabled="disabled">
+        <el-tab-pane label="热门" name="1">
           <div class="blog" v-for="(item,index) in list"
                :key="index" @click="skip(item)"
           >
@@ -26,6 +26,15 @@
               </el-image>
             </div>
           </div>
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page.sync="currentPage3"
+            :page-size="size"
+            layout="prev, pager, next, jumper"
+            :total="total"
+            :hide-on-single-page=true>
+          </el-pagination>
           <p v-if="noMore" class="pp">没有更多内容了...</p>
         </el-tab-pane>
         <el-tab-pane label="最新" name="0">
@@ -52,6 +61,16 @@
               </el-image>
             </div>
           </div>
+          <el-pagination
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+            :current-page.sync="page"
+            :page-size="size"
+            layout="prev, pager, next, jumper"
+            :total="total"
+            :hide-on-single-page=true
+          >
+          </el-pagination>
           <p v-if="noMore" class="pp">没有更多内容了...</p>
         </el-tab-pane>
       </el-tabs>
@@ -66,7 +85,7 @@
     name: "Left",
     data() {
       return {
-        admin:{},
+        admin: {},
         select: false,
         page: 1,
         size: 6,
@@ -105,6 +124,18 @@
       }
     },
     methods: {
+      handleSizeChange(val) {
+        this.size = val;
+        this.fetchData();
+      },
+      handleCurrentChange(val) {
+        this.page = val;
+        this.fetchData();
+      },
+      currentPage3(val) {
+        this.page = val;
+        this.fetchData();
+      },
       skip(item) {
         this.$router.push({
           path: '/blog',
@@ -135,17 +166,6 @@
             }
           })
         }
-      },
-      load() {
-        setTimeout(() => {
-          if (this.size > this.total) {
-            this.noMore = true
-            this.disabled = true
-            return
-          }
-          this.size += 5;
-          this.fetchData();
-        }, 500)
       },
       handleClick(tab, event) {
         this.searchMap.hot = tab.name;
@@ -179,7 +199,6 @@
         }
       },
       createTime(createTime) {
-
         var startTime = new Date(createTime);
         var endTime = new Date();
         var diff = endTime.getTime() - startTime.getTime();
@@ -207,7 +226,7 @@
         var minutes = Math.floor(diff / (60 * 1000))
         if (minutes > 1) {
           return minutes + '分钟前'
-        }else {
+        } else {
           return '刚刚'
         }
       }
@@ -216,9 +235,10 @@
 </script>
 
 <style scoped>
-.tab {
-  background-color: #ffffff;
-}
+  .tab {
+    background-color: #ffffff;
+  }
+
   .blog {
     border-bottom: 1px solid rgb(244, 245, 246);
     height: 120px;
@@ -302,5 +322,7 @@
     color: rgb(245, 98, 72);
   }
 
-
+  .el-pagination {
+    text-align: center;
+  }
 </style>

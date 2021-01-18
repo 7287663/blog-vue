@@ -1,5 +1,5 @@
-// const BASE_URL  = 'http://192.168.0.112:8082/user'
-// const UPLOAD_URL ='http://192.168.0.112:8082/admin/upload'
+// const BASE_URL  = 'http://192.168.0.113:8082/user'
+// const UPLOAD_URL ='http://192.168.0.113:8082/admin/upload'
 const BASE_URL  = 'http://42.192.171.164:8082/user'
 const UPLOAD_URL ='http://42.192.171.164:8082/admin/upload'
 export default {
